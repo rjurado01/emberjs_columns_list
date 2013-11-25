@@ -1,0 +1,50 @@
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Columns List</title>
+  <link rel="stylesheet" type="text/css" href="index.css" />
+
+  <script src="libs/jquery-1.10.2.min.js"></script>
+  <script src="libs/handlebars-v1.1.2.js"></script>
+  <script src="libs/ember.js"></script>
+  <script src="libs/ember-data.js"></script>
+  <script src="index.js"></script>
+</head>
+<body>
+  <h2>Columns List</h2>
+
+  <script type="text/x-handlebars" data-template-name="todos">
+    {{view App.ListView}}
+  </script>
+
+  <script type="text/x-handlebars" data-template-name="list">
+    <button {{action "insertElement"}} class=clear>
+      Add Element
+    </button>
+
+    <div>
+      <div class=column>
+        <ul id=list1>
+          {{#each controller.column1 itemController="item"}}
+            {{view App.ItemView}}
+          {{/each}}
+        </ul>
+      </div>
+      <div class=column>
+        <ul id=list2>
+          {{#each controller.column2 itemController="item"}}
+            {{view App.ItemView}}
+          {{/each}}
+        </ul>
+      </div>
+    </div>
+  </script>
+
+  <script type="text/x-handlebars" data-template-name="item">
+    <div class=element>
+      <img {{bind-attr src=logo}} alt="Logo"></br>
+      {{name}}
+    </div>
+  </script>
+</body>
+</html>
